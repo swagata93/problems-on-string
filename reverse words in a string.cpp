@@ -1,22 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void mySwap(string& str, int i, int j){
-    char t=str[i];
-    str[i]=str[j];
-    str[j]=t;
-}
 
 void myReverse(string& str, int low, int high){
     while(low<=high){
-        mySwap(str, low, high);
+        swap(str[low], str[high]);
         low++; high--;
     }
 }
 
-void reverseWords(string& str, int n){
+void reverseWords(string& str){
     int s=0;
-    //auto n=str.size();
+    auto n=str.size();
     for(int e=0; e<n; e++){
         if(str[e]==' '){
             myReverse(str, s, e-1); s=e+1;
@@ -32,9 +27,7 @@ int main()
 {
     string str;
     getline(cin, str);
-    int n=str.size();
-    //cout<<n;
-    reverseWords(str, n);
-    for(int i=0; i<n; i++) cout<< str[i];
+    reverseWords(str);
+    cout<<str;
     return 0;
 }
